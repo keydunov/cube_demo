@@ -1,0 +1,19 @@
+views:
+  - name: customers
+
+
+    includes:
+      # measures
+      - users.total_orders_amount
+      - users.average_lifetime_value
+
+      # dimensions
+      - users.signup_date
+      - users.most_recent_order_date
+      - users.number_of_orders
+
+    measures:
+      # override measure name 
+      - name: count
+        sql: '{users.customers_count}'
+        type: number

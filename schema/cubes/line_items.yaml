@@ -1,0 +1,27 @@
+cubes:
+  - name: line_items
+    sql: SELECT * FROM public.line_items
+      
+    joins:
+      - name: products
+        sql: "{CUBE}.product_id = {products}.id"
+        relationship: belongs_to
+      - name: orders
+        sql: "{CUBE}.order_id = {orders}.id"
+        relationship: belongs_to
+
+    measures:
+      - name: count
+        type: count
+      - name: total_amount
+        sql: price
+        type: sum
+
+    dimensions:
+      - name: id
+        sql: id
+        type: number
+        primary_key: true
+      - name: created_date
+        sql: created_at
+        type: time

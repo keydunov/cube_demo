@@ -1,0 +1,56 @@
+cubes:
+  - name: users
+    sql: SELECT * FROM public.users
+
+    measures:
+      - name: count
+        type: count
+
+      - name: customers_count
+        type: count
+        filters:
+          - sql: '{number_of_orders} > 0'
+
+      - name: total_orders_amount
+        sql: '{lifetime_value}'
+        type: sum
+
+      - name: average_lifetime_value
+        sql: '{total_orders_amount} / {customers_count}'
+        type: avg
+
+    dimensions:
+      - name: id
+        sql: id
+        type: number
+        primary_key: true
+      - name: city
+        sql: city
+        type: string
+      - name: company
+        sql: company
+        type: string
+      - name: first_name
+        sql: first_name
+        type: string
+      - name: last_name
+        sql: last_name
+        type: string
+      - name: state
+        sql: state
+        type: string
+      - name: signup_date
+        sql: created_at
+        type: time
+      - name: number_of_orders
+        sql: '{orders.count}'
+        type: number
+        sub_query: true
+      - name: most_recent_order_date
+        sql: '{orders.last_order_date}'
+        type: number
+        sub_query: true
+      - name: lifetime_value
+        sql: '{orders.amount}'
+        type: number
+        sub_query: true

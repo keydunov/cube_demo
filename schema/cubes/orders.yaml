@@ -1,0 +1,43 @@
+cubes:
+  - name: orders
+    sql: SELECT * FROM public.orders
+
+    joins:
+      - name: users
+        sql: "{CUBE}.user_id = {users}.id"
+        relationship: belongsTo
+      - name: products
+        sql: "{CUBE}.product_id = {products}.id"
+        relationship: belongsTo
+
+    measures:
+      - name: count
+        type: count
+
+      - name: total_amount
+        sql: '{CUBE.amount}'
+        type: sum
+
+      - name: average_order_value
+        sql: '{CUBE.amount}'
+        type: avg
+
+      - name: last_order_date
+        sql: created_at
+        type: max
+
+    dimensions:
+      - name: id
+        sql: id
+        type: number
+        primary_key: true
+      - name: status
+        sql: status
+        type: string
+      - name: created_date
+        sql: created_at
+        type: time
+      - name: amount
+        sql: '{line_items.total_amount}'
+        type: number
+        sub_query: true

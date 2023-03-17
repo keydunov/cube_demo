@@ -1,14 +1,11 @@
 cubes:
-  - name: ProductCategories
+  - name: product_categories
     sql: SELECT * FROM public.product_categories
-      # preAggregations:
-      # Pre-Aggregations definitions go here
-      # Learn more here: https://cube.dev/docs/caching/pre-aggregations/getting-started
-    joins: []
+      
     measures:
       - name: count
         type: count
-        drillMembers: [id, name, createdAt]
+    
     dimensions:
       - name: id
         sql: id
@@ -17,6 +14,6 @@ cubes:
       - name: name
         sql: name
         type: string
-      - name: createdAt
+      - name: created_date
         sql: created_at
         type: time
