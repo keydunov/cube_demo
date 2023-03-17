@@ -16,8 +16,8 @@ cubes:
         type: sum
 
       - name: average_lifetime_value
-        sql: '{total_orders_amount} / {customers_count}'
-        type: avg
+        sql: '{total_orders_amount} / NULLIF({customers_count}, 0)'
+        type: number
 
     dimensions:
       - name: id
@@ -51,6 +51,6 @@ cubes:
         type: number
         sub_query: true
       - name: lifetime_value
-        sql: '{orders.amount}'
+        sql: '{line_items.total_amount}'
         type: number
         sub_query: true
