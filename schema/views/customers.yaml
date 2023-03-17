@@ -1,7 +1,6 @@
 views:
   - name: customers
 
-
     includes:
       # measures
       - users.total_orders_amount
