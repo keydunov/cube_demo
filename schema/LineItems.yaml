@@ -1,0 +1,31 @@
+cubes:
+  - name: LineItems
+    sql: SELECT * FROM public.line_items
+      # preAggregations:
+      # Pre-Aggregations definitions go here
+      # Learn more here: https://cube.dev/docs/caching/pre-aggregations/getting-started
+    joins:
+      - name: Products
+        sql: "{CUBE}.product_id = {Products}.id"
+        relationship: belongsTo
+      - name: Orders
+        sql: "{CUBE}.order_id = {Orders}.id"
+        relationship: belongsTo
+    measures:
+      - name: count
+        type: count
+        drillMembers: [id, createdAt]
+      - name: quantity
+        sql: quantity
+        type: sum
+      - name: price
+        sql: price
+        type: sum
+    dimensions:
+      - name: id
+        sql: id
+        type: number
+        primaryKey: true
+      - name: createdAt
+        sql: created_at
+        type: time
