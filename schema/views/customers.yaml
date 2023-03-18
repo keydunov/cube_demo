@@ -1,5 +1,6 @@
 views:
   - name: customers
+    description: "Users who placed at least one order"
 
     includes:
       # measures

@@ -11,9 +11,11 @@ cubes:
         sql: id
         type: number
         primaryKey: true
+
       - name: name
         sql: name
         type: string
+        
       - name: created_date
         sql: created_at
         type: time

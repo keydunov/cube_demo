@@ -16,12 +16,15 @@ cubes:
         sql: id
         type: number
         primaryKey: true
+
       - name: name
         sql: name
         type: string
+
       - name: description
         sql: description
         type: string
+        
       - name: createdAt
         sql: created_at
         type: time

@@ -6,6 +6,7 @@ cubes:
       - name: users
         sql: "{CUBE}.user_id = {users}.id"
         relationship: belongsTo
+
       - name: products
         sql: "{CUBE}.product_id = {products}.id"
         relationship: belongsTo
@@ -31,12 +32,15 @@ cubes:
         sql: id
         type: number
         primary_key: true
+
       - name: status
         sql: status
         type: string
+
       - name: created_date
         sql: created_at
         type: time
+        
       - name: amount
         sql: '{line_items.total_amount}'
         type: number
