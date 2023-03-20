@@ -1,6 +1,7 @@
 cubes:
   - name: products
     sql: SELECT * FROM public.products
+    shown: false
       
     joins:
       - name: product_categories

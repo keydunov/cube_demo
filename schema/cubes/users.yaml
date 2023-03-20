@@ -1,6 +1,7 @@
 cubes:
   - name: users
     sql: SELECT * FROM public.users
+    shown: false
 
     measures:
       - name: count

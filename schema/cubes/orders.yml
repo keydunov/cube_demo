@@ -1,6 +1,7 @@
 cubes:
   - name: orders
     sql: SELECT * FROM public.orders
+    shown: false
 
     joins:
       - name: users

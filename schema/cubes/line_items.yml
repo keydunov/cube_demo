@@ -1,6 +1,7 @@
 cubes:
   - name: line_items
     sql: SELECT * FROM public.line_items
+    shown: false
       
     joins:
       - name: products
