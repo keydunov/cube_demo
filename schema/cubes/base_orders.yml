@@ -1,5 +1,5 @@
 cubes:
-  - name: orders
+  - name: base_orders
     sql: SELECT * FROM public.orders
     shown: false
 

@@ -8,8 +8,8 @@ cubes:
         sql: "{CUBE}.product_id = {products}.id"
         relationship: belongs_to
         
-      - name: orders
-        sql: "{CUBE}.order_id = {orders}.id"
+      - name: base_orders
+        sql: "{CUBE}.order_id = {base_orders}.id"
         relationship: belongs_to
 
     measures:

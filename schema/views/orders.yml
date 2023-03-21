@@ -1,0 +1,26 @@
+views:
+  - name: orders
+
+    includes:
+      # measures
+      - base_orders.total_amount
+      - base_orders.count
+      - base_orders.average_order_value
+
+      # dimensions
+      - base_orders.status
+      - base_orders.created_date
+
+    dimensions:
+      # override names
+      - name: product
+        sql: '{base_orders.products.name}'
+        type: string
+
+      - name: product_category
+        sql: '{base_orders.products.product_categories.name}'
+        type: string
+
+      - name: customer_city
+        sql: '{base_orders.users.city}'
+        type: string
