@@ -57,7 +57,7 @@ cubes:
 
       - name: most_recent_order_date
         sql: '{base_orders.last_order_date}'
-        type: number
+        type: time
         sub_query: true
 
       - name: lifetime_value
