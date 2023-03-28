@@ -3,6 +3,11 @@ cubes:
     sql: SELECT * FROM public.users
     shown: false
 
+    joins:
+      - name: base_orders
+        sql: "{CUBE}.id = {base_orders}.user_id"
+        relationship: has_many
+
     measures:
       - name: count
         type: count
