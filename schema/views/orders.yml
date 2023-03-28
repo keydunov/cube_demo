@@ -14,11 +14,11 @@ views:
     dimensions:
       # override names
       - name: product
-        sql: '{base_orders.products.name}'
+        sql: '{base_orders.line_items.products.name}'
         type: string
 
       - name: product_category
-        sql: '{base_orders.products.product_categories.name}'
+        sql: '{base_orders.line_items.products.product_categories.name}'
         type: string
 
       - name: customer_city

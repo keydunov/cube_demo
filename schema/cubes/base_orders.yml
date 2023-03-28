@@ -8,10 +8,6 @@ cubes:
         sql: "{CUBE}.user_id = {users}.id"
         relationship: belongsTo
 
-      - name: products
-        sql: "{CUBE}.product_id = {products}.id"
-        relationship: belongsTo
-
     measures:
       - name: count
         type: count
