@@ -6,7 +6,6 @@ views:
       - base_orders.total_amount
       - base_orders.count
       - base_orders.average_order_value
-      - base_orders.total_amount_shipped
 
       # dimensions
       - base_orders.status
