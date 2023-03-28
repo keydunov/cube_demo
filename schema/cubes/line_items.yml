@@ -7,10 +7,6 @@ cubes:
       - name: products
         sql: "{CUBE}.product_id = {products}.id"
         relationship: belongs_to
-        
-      - name: base_orders
-        sql: "{CUBE}.order_id = {base_orders}.id"
-        relationship: belongs_to
 
     measures:
       - name: count
