@@ -24,6 +24,12 @@ cubes:
         sql: '{CUBE.amount}'
         type: avg
 
+      - name: total_amount_shipped
+        sql: '{CUBE.amount}'
+        type: sum
+        filters:
+          - sql: "{CUBE.status} = 'shipped'"
+
       - name: last_order_date
         sql: created_at
         type: max

@@ -4,6 +4,7 @@ views:
     includes:
       # measures
       - base_orders.total_amount
+      - base_orders.total_amount_shipped
       - base_orders.count
       - base_orders.average_order_value
 
