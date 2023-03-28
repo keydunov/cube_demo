@@ -20,6 +20,12 @@ cubes:
         sql: '{CUBE.amount}'
         type: sum
 
+      - name: total_amount_shipped
+        sql: '{CUBE.amount}'
+        type: sum
+        filters:
+          - sql: "{CUBE.status} = 'shipped'"
+
       - name: average_order_value
         sql: '{CUBE.amount}'
         type: avg
