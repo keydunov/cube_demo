@@ -1,16 +1,16 @@
 cubes:
   - name: base_orders
-    sql: SELECT * FROM public.orders
-    shown: false
+    sql_table: public.orders
+    public: false
 
     joins:
       - name: users
         sql: "{CUBE}.user_id = {users}.id"
-        relationship: belongsTo
+        relationship: many_to_one
 
       - name: line_items
         sql: "{CUBE}.id = {line_items}.order_id"
-        relationship: has_many
+        relationship: one_to_many
 
     measures:
       - name: count

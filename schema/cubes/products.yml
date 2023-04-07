@@ -1,12 +1,12 @@
 cubes:
   - name: products
-    sql: SELECT * FROM public.products
-    shown: false
+    sql_table: public.products
+    public: false
       
     joins:
       - name: product_categories
         sql: "{CUBE}.product_category_id = {product_categories}.id"
-        relationship: belongsTo
+        relationship: many_to_one
 
     measures:
       - name: count
@@ -26,6 +26,6 @@ cubes:
         sql: description
         type: string
         
-      - name: createdAt
+      - name: created_at
         sql: created_at
         type: time

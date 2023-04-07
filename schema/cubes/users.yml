@@ -1,7 +1,7 @@
 cubes:
   - name: users
-    sql: SELECT * FROM public.users
-    shown: false
+    sql_table: public.users
+    public: false
 
     joins:
       - name: base_orders

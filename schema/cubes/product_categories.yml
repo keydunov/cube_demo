@@ -1,7 +1,7 @@
 cubes:
   - name: product_categories
-    sql: SELECT * FROM public.product_categories
-    shown: false
+    sql_table: public.product_categories
+    public: false
       
     measures:
       - name: count
