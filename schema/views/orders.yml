@@ -1,27 +1,29 @@
 views:
   - name: orders
 
-    includes:
-      # measures
-      - base_orders.total_amount
-      - base_orders.total_amount_shipped
-      - base_orders.count
-      - base_orders.average_order_value
+    cubes:
+      - cube: base_orders
+        includes:
+          # dimensions
+          - status
+          - created_date
 
-      # dimensions
-      - base_orders.status
-      - base_orders.created_date
+          # measures
+          - total_amount
+          - total_amlunt_shipped
+          - count
+          - average_order_value
+      
+      - cube: base_orders.line_items.products
+        includes: 
+          - member: name
+            name: product
 
-    dimensions:
-      # override names
-      - name: product
-        sql: '{base_orders.line_items.products.name}'
-        type: string
+      - cube: base_orders.line_items.products.product_categories
+        includes: 
+          - member: name
+            name: product_category
 
-      - name: product_category
-        sql: '{base_orders.line_items.products.product_categories.name}'
-        type: string
-
-      - name: customer_city
-        sql: '{base_orders.users.city}'
-        type: string
+      - cube: base_orders.users
+        includes: 
+          - city

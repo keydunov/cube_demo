@@ -2,18 +2,16 @@ views:
   - name: customers
     description: "Users who placed at least one order"
 
-    includes:
-      # measures
-      - users.total_orders_amount
-      - users.average_lifetime_value
+    cubes:
+      - cube: users
+        includes:    
+          # dimensions
+          - signup_date
+          - most_recent_order_date
+          - number_of_orders
+          - member: customers_count
+            name: count
 
-      # dimensions
-      - users.signup_date
-      - users.most_recent_order_date
-      - users.number_of_orders
-
-    measures:
-      # override measure name 
-      - name: count
-        sql: '{users.customers_count}'
-        type: number
+          # measures
+          - total_orders_amount
+          - average_lifetime_value
