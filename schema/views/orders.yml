@@ -25,5 +25,6 @@ views:
             name: product_category
 
       - cube: base_orders.users
+        prefix: true
         includes: 
           - city
