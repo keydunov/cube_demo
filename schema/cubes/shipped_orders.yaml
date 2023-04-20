@@ -1,7 +1,7 @@
 cubes:
-  - name: base_orders
-    sql_table: public.orders
-    public: false
+  - name: shipped_orders
+    sql: select * public.orders where status = 'shipped'
+    public: true
     joins:
       - name: users
         sql: '{CUBE}.user_id = {users}.id'
