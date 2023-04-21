@@ -10,7 +10,7 @@ views:
           - most_recent_order_date
           - number_of_orders
           - member: customers_count
-            name: count
+            name: count_ttt
 
           # measures
           - total_orders_amount
