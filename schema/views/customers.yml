@@ -3,14 +3,14 @@ views:
     description: "Users who placed at least one order"
 
     cubes:
-      - cube: users
+      - join_path: users
         includes:    
           # dimensions
           - signup_date
           - most_recent_order_date
           - number_of_orders
-          - member: customers_count
-            name: count
+          - name: customers_count
+            alias: count
 
           # measures
           - total_orders_amount
