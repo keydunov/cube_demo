@@ -14,6 +14,7 @@ module.exports = {
   semanticLayerSync: () => {
     return [{
       type: 'metabase',
+      name: 'Metabase Demo Account',
       config: {
         url: 'https://cube-dev-partner.metabaseapp.com',
         user: 'artyom+cubeserviceaccount@cube.dev',
