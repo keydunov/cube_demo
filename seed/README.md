@@ -1,3 +1,3 @@
 The demo dataset has the following entity-relationship diagram:
 
-![dataset-etd](/seed-data-schema.png)
+![dataset-erd](/seed/seed-data-schema.png)
