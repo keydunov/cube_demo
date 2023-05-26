@@ -2,3 +2,5 @@
 node_modules
 .cubestore
 upstream
+
+seed/loader
