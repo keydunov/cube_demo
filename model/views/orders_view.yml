@@ -1,0 +1,20 @@
+views:
+  - name: orders_view
+
+    cubes:
+      - join_path: orders
+        includes:
+          - status
+          - created_date
+
+          - total_amount
+          - total_amount_shipped
+          - count
+          - average_order_value
+
+      - join_path: orders.users
+        prefix: true
+        includes: 
+          - city
+          - age
+          - gender

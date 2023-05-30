@@ -1,29 +1,7 @@
 cubes:
   - name: users
-    sql_table: public.users
+    sql_table: ecom.users
     public: false
-
-    joins:
-      - name: base_orders
-        sql: "{CUBE}.id = {base_orders}.user_id"
-        relationship: has_many
-
-    measures:
-      - name: count
-        type: count
-
-      - name: customers_count
-        type: count
-        filters:
-          - sql: '{number_of_orders} > 0'
-
-      - name: total_orders_amount
-        sql: '{lifetime_value}'
-        type: sum
-
-      - name: average_lifetime_value
-        sql: '{total_orders_amount} / NULLIF({customers_count}, 0)'
-        type: number
 
     dimensions:
       - name: id
@@ -56,12 +34,12 @@ cubes:
         type: time
 
       - name: number_of_orders
-        sql: '{base_orders.count}'
+        sql: '{orders.count}'
         type: number
         sub_query: true
 
       - name: most_recent_order_date
-        sql: '{base_orders.last_order_date}'
+        sql: '{orders.last_order_date}'
         type: time
         sub_query: true
 
@@ -69,3 +47,23 @@ cubes:
         sql: '{line_items.total_amount}'
         type: number
         sub_query: true
+
+
+    measures:
+      - name: count
+        type: count
+
+      - name: customers_count
+        type: count
+        filters:
+          - sql: '{number_of_orders} > 0'
+
+      - name: total_orders_amount
+        sql: '{lifetime_value}'
+        type: sum
+
+      - name: average_lifetime_value
+        sql: '{total_orders_amount} / NULLIF({customers_count}, 0)'
+        type: number
+
+

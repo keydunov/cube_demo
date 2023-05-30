@@ -1,20 +1,12 @@
 cubes:
   - name: line_items
-    sql_table: public.line_items
+    sql_table: ecom.line_items
     public: false
       
     joins:
       - name: products
         sql: "{CUBE}.product_id = {products}.id"
         relationship: many_to_one
-
-    measures:
-      - name: count
-        type: count
-
-      - name: total_amount
-        sql: price
-        type: sum
 
     dimensions:
       - name: id
@@ -25,3 +17,20 @@ cubes:
       - name: created_date
         sql: created_at
         type: time
+
+    measures:
+      - name: count
+        type: count
+
+      - name: total_amount
+        sql: price
+        type: sum
+
+    pre_aggregations:
+      - name: line_items_summary
+        measures:
+          - count
+          - total_amount
+        dimensions:
+          - products.product_category
+

@@ -1,0 +1,13 @@
+views:
+  - name: products_sold
+
+    cubes: 
+      - join_path: line_items
+        includes: 
+          - count
+
+      - join_path: products
+        includes:
+          - product_category
+      
+  
