@@ -35,6 +35,11 @@ cubes:
       - name: count
         type: count
 
+      - name: shipped_count
+        type: count
+        filters:
+          - sql: "{CUBE.status} = 'shipped'"
+
       - name: total_amount
         sql: '{CUBE.amount}'
         type: sum
@@ -47,7 +52,7 @@ cubes:
         sql: '{CUBE.amount}'
         type: sum
         filters:
-          - sql: '{CUBE.status} = ''shipped'''
+          - sql: "{CUBE.status} = 'shipped'"
           
       - name: last_order_date
         sql: created_at

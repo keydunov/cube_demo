@@ -28,6 +28,7 @@ cubes:
 
     pre_aggregations:
       - name: line_items_summary
+        scheduled_refresh: false
         measures:
           - count
           - total_amount
