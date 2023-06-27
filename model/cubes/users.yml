@@ -33,37 +33,8 @@ cubes:
         sql: created_at
         type: time
 
-      - name: number_of_orders
-        sql: '{orders.count}'
-        type: number
-        sub_query: true
-
-      - name: most_recent_order_date
-        sql: '{orders.last_order_date}'
-        type: time
-        sub_query: true
-
-      - name: lifetime_value
-        sql: '{line_items.total_amount}'
-        type: number
-        sub_query: true
-
-
     measures:
       - name: count
         type: count
-
-      - name: customers_count
-        type: count
-        filters:
-          - sql: '{number_of_orders} > 0'
-
-      - name: total_orders_amount
-        sql: '{lifetime_value}'
-        type: sum
-
-      - name: average_lifetime_value
-        sql: '{total_orders_amount} / NULLIF({customers_count}, 0)'
-        type: number
 
 

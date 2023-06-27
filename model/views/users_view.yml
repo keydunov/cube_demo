@@ -1,8 +1,0 @@
-views:
-  - name: users_view
-
-    cubes: 
-      - join_path: users
-        includes: "*"
-      
-  
