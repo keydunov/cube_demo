@@ -33,8 +33,20 @@ cubes:
         sql: created_at
         type: time
 
+      - name: lifetime_value
+        sql: '{orders.total_amount}'
+        type: number
+        sub_query: true
+
     measures:
       - name: count
         type: count
 
+      - name: total_lifetime_value
+        sql: "{lifetime_value}"
+        type: sum
+
+      - name: average_lifetime_value
+        sql: "{total_lifetime_value} / {count}"
+        type: number
 
