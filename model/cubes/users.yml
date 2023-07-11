@@ -38,6 +38,11 @@ cubes:
         type: number
         sub_query: true
 
+      - name: average_order_value
+        sql: '{orders.average_order_value}'
+        type: number
+        sub_query: true
+
     measures:
       - name: count
         type: count
