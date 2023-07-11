@@ -38,11 +38,6 @@ cubes:
         type: number
         sub_query: true
 
-      - name: average_order_value
-        sql: '{orders.average_order_value}'
-        type: number
-        sub_query: true
-
     measures:
       - name: count
         type: count
@@ -51,7 +46,7 @@ cubes:
         sql: "{lifetime_value}"
         type: sum
 
-      - name: average_lifetime_value
-        sql: "{total_lifetime_value} / {count}"
-        type: number
+      # - name: average_lifetime_value
+      #   sql: "{total_lifetime_value} / {count}"
+      #   type: number
 
