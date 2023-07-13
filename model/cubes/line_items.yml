@@ -2,30 +2,24 @@ cubes:
   - name: line_items
     sql_table: ecom.line_items
     public: false
-      
     joins:
       - name: products
-        sql: "{CUBE}.product_id = {products}.id"
+        sql: '{CUBE}.product_id = {products}.id'
         relationship: many_to_one
-
     dimensions:
       - name: id
         sql: id
         type: number
         primary_key: true
-        
       - name: created_date
         sql: created_at
         type: time
-
     measures:
       - name: count
         type: count
-
       - name: total_amount
         sql: price
         type: sum
-
     pre_aggregations:
       - name: line_items_summary
         scheduled_refresh: false
@@ -34,4 +28,10 @@ cubes:
           - total_amount
         dimensions:
           - products.product_category
-
+      - name: main
+        measures:
+          - line_items.total_amount
+        dimensions:
+          - orders.status
+        timeDimension: line_items.created_date
+        granularity: quarter
