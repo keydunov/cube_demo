@@ -1,31 +1,31 @@
 cubes:
   - name: orders
-    sql_table: ecom.orders
+    sql_table: ECOM.ORDERS
     public: false
 
     joins:
       - name: users
-        sql: '{CUBE}.user_id = {users}.id'
+        sql: "{CUBE}.USER_ID = {users}.ID"
         relationship: many_to_one
 
-      - name: line_items
-        sql: '{CUBE}.id = {line_items}.order_id'
-        relationship: one_to_many
-
     dimensions:
+      - name: status
+        sql: STATUS
+        type: string
+
       - name: id
-        sql: id
+        sql: ID
         type: number
         primary_key: true
 
-      - name: status
-        sql: status
-        type: string
-
-      - name: created_date
-        sql: created_at
+      - name: created_at
+        sql: CREATED_AT
         type: time
-        
+
+      - name: completed_at
+        sql: COMPLETED_AT
+        type: time
+
       - name: amount
         sql: '{line_items.total_amount}'
         type: number
@@ -35,10 +35,15 @@ cubes:
       - name: count
         type: count
 
-      - name: shipped_count
+      - name: completed_count
         type: count
         filters:
-          - sql: "{CUBE.status} = 'shipped'"
+          - sql: "{CUBE}.STATUS = 'completed'"
+
+      - name: completed_percentage
+        type: number
+        sql: "({completed_count} / NULLIF({count}, 0)) * 100.0"
+        format: percent
 
       - name: total_amount
         sql: '{CUBE.amount}'
@@ -47,15 +52,3 @@ cubes:
       - name: average_order_value
         sql: '{CUBE.amount}'
         type: avg
-
-      - name: total_amount_shipped
-        sql: '{CUBE.amount}'
-        type: sum
-        filters:
-          - sql: "{CUBE.status} = 'shipped'"
-          
-      - name: last_order_date
-        sql: created_at
-        type: max
-
-
