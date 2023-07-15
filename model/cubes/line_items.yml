@@ -11,6 +11,7 @@ cubes:
       - name: orders
         sql: "{CUBE}.ORDER_ID = {orders}.ID"
         relationship: many_to_one
+
     dimensions:
       - name: id
         sql: ID
@@ -20,12 +21,15 @@ cubes:
       - name: created_at
         sql: CREATED_AT
         type: time
+
     measures:
       - name: count
         type: count
+
       - name: total_amount
         sql: PRICE
         type: sum
+        
     pre_aggregations:
       - name: line_items_summary
         scheduled_refresh: false

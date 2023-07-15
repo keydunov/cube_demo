@@ -9,14 +9,14 @@ cubes:
         relationship: many_to_one
 
     dimensions:
-      - name: status
-        sql: STATUS
-        type: string
-
       - name: id
         sql: ID
         type: number
         primary_key: true
+
+      - name: status
+        sql: STATUS
+        type: string
 
       - name: created_at
         sql: CREATED_AT
