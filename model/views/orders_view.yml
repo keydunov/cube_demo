@@ -5,7 +5,7 @@ views:
       - join_path: orders
         includes:
           - status
-          - created_date
+          - created_at
 
           - total_amount
           - total_amount_shipped
