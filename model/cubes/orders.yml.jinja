@@ -1,6 +1,6 @@
 cubes:
   - name: orders
-    sql_table: ECOM.ORDERS
+    sql_table: "ECOM.{{ COMPILE_CONTEXT.securityContext.table }}"
     public: false
 
     joins:
