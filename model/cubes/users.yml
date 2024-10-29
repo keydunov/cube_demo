@@ -4,7 +4,7 @@
 
 {# Convenient function to mask values if the current team is not trusted #}
 {% macro masked(sql, is_visible) -%}
-{{ sql if is_visible else "\"'--- masked ---'\"" }}
+{{ sql if is_visible else "\"'--- masked ---'\"" }} 
 {%- endmacro %} 
 
 cubes:
