@@ -54,6 +54,16 @@ module.exports = {
         password: process.env.METABASE_SLS_PASSWORD,
         url: process.env.METABASE_SLS_URL
       }
+    }, {
+      type: "tableau-cloud",
+      name: "Cube Tableau Cloud Sync",
+      config: {
+        database: "Cube Cloud: Cube Cloud Demo",
+        region: "us-west-2b",
+        site: "cubedev",
+        personalAccessToken: "Cube Cloud Demo",
+        personalAccessTokenSecret: "V1LqCMCdT8me10fCAJzIkg==:fQgpzthuRCmMiOlTH695HjCC0xceTZeh"
+      }
     }];
   }
 };
